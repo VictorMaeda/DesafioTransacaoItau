@@ -14,5 +14,7 @@ private List<Transacao> lista = new ArrayList<>();
 public void limparLista() {
 	lista = new ArrayList<>();
 }
-
+public void cadastrar(Transacao transacao) {
+	lista.add(transacao);
+}
 }

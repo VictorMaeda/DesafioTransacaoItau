@@ -2,8 +2,16 @@ package Desafios.Itau.model;
 
 import java.time.OffsetDateTime;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.PositiveOrZero;
+
 public class Transacao {
+@NotNull(message = "valor não pode ser nulo")
+@PositiveOrZero(message = "A transação deve ter valor igual ou maior que 0")
 private float valor;
+@NotNull(message = "dataHora não pode ser nulo")
+@Past(message = "A transação deve ter acontecido a qualquer momento no passado")
 private OffsetDateTime dataHora;
 public float getValor() {
 	return valor;
