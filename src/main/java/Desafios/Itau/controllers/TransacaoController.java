@@ -1,5 +1,7 @@
 package Desafios.Itau.controllers;
 
+import java.time.OffsetDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import Desafios.Itau.model.Transacao;
 import Desafios.Itau.repository.TransacaoRepository;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class TransacaoController {
@@ -34,6 +40,10 @@ public ResponseEntity postMethodName(@RequestBody @Valid Transacao transacao, Bi
     }
     repository.cadastrar(transacao);
     return ResponseEntity.created(null).build();
+}
+@GetMapping("/estatistica/{segundos}")
+public ResponseEntity getMethodName(@PathVariable int segundos) {
+    return ResponseEntity.ok().body(repository.calcularEstatisticas(OffsetDateTime.now().minusSeconds(segundos)));
 }
 
 
