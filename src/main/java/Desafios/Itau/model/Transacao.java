@@ -11,7 +11,7 @@ public class Transacao {
 @PositiveOrZero(message = "A transação deve ter valor igual ou maior que 0")
 private float valor;
 @NotNull(message = "dataHora não pode ser nulo")
-@Past(message = "A transação deve ter acontecido a qualquer momento no passado")
+@Past(message = "A transação deve ter acontecido no passado")
 private OffsetDateTime dataHora;
 public float getValor() {
 	return valor;
@@ -26,6 +26,8 @@ public void setDataHora(OffsetDateTime dataHora) {
 	this.dataHora = dataHora;
 }
 
-
-
+	public Transacao(float valor, OffsetDateTime dataHora) {
+		this.valor = valor;
+		this.dataHora = dataHora;
+	}
 }

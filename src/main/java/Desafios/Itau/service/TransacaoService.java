@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TransacaoService {
-private List<Transacao> lista = new ArrayList<>();
+	private List<Transacao> lista = new ArrayList<>(List.of(
+			new Transacao(10.0f, OffsetDateTime.now().minusSeconds(1))
+	));
 public List<Transacao> getLista(){
 	return lista;
 }
