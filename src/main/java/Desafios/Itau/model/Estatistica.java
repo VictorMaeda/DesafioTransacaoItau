@@ -1,5 +1,4 @@
 package Desafios.Itau.model;
 
-public record Estatistica(int count, float sum, float avg, float min, float max) {
-
+public record Estatistica(long count, double sum, double avg, double min, double max) {
 }
