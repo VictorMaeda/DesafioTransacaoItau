@@ -24,19 +24,4 @@ public void limparLista() {
 public void cadastrar(Transacao transacao) {
 	lista.add(transacao);
 }
-
-	public Estatistica calcularEstatisticas(int segundos) {
-		OffsetDateTime horario = OffsetDateTime.now().minusSeconds(segundos);
-		DoubleSummaryStatistics stats = lista.stream()
-				.filter(t -> horario.isAfter(t.getDataHora()))
-				.collect(Collectors.summarizingDouble(Transacao::getValor));
-
-		return new Estatistica(
-				stats.getCount(),
-				stats.getSum(),
-				stats.getAverage(),
-				stats.getCount() > 0 ? stats.getMin() : 0,
-				stats.getCount() > 0 ? stats.getMax() : 0
-		);
-	}
 }
